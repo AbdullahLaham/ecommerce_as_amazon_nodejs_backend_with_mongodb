@@ -52,10 +52,17 @@ const ProductSchema = new mongoose.Schema({
         type: Array,
     },
 
-    color: {
-        type: String,
-        required: true,
-    },
+    // color: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Color',
+    // },
+
+    color: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Color',
+    }],
+
+    tags: [],
 
     ratings: [
         {

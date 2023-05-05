@@ -13,6 +13,8 @@ import categoryRouter from './routes/categoryRoutes.js'
 import blogCategoryRouter from './routes/BlogCategRoutes.js'
 import brandRouter from './routes/BrandRoutes.js';
 import couponRouter from './routes/couponRoutes.js';
+import colorRouter from './routes/colorRoutes.js';
+import enqRouter from './routes/enqRoutes.js';
 const app = express();
 // morgan is to show the requests that comes to your server in the terminal
 app.use(morgan("dev"));
@@ -31,6 +33,9 @@ app.use('/category', categoryRouter);
 app.use('/blogcategory', blogCategoryRouter);
 app.use('/brand', brandRouter);
 app.use('/coupon', couponRouter);
+app.use('/color', colorRouter);
+app.use('/enquiry', enqRouter);
+
 app.use(notFound);
 app.use(errorHandler);
 app.listen(PORT, () => {

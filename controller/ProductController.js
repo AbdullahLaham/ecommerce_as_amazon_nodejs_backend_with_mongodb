@@ -3,7 +3,8 @@ import User from '../models/UserModel.js';
 import asyncHandler from 'express-async-handler';
 import slugify from 'slugify';
 import { validateMongoDBID } from '../utils/validateMongodbId.js';
-import {cloudinaryUploadImg} from '../utils/cloudinary.js';
+import {cloudinaryUploadImg, cloudinaryDeleteImg} from '../utils/cloudinary.js';
+
 import fs from 'fs';
 
 export const createProduct = asyncHandler(async (req, res) => {
@@ -189,8 +190,10 @@ export const rating =  asyncHandler(async (req, res) => {
 
 
 export const uploadImages = async (req, res) => {
-    const {id} = req.params;
-    validateMongoDBID(id);
+    // const {id} = req.params;
+
+    // validateMongoDBID(id);
+
     try {
         const uploader = (path) => cloudinaryUploadImg(path, "images");
         let urls = [];
@@ -200,10 +203,29 @@ export const uploadImages = async (req, res) => {
             let newPath = await uploader(path);
             urls.push(newPath);
         }
-        let findProduct = await Product.findByIdAndUpdate(id, {
-            images: urls.map((file) =>  file.url)
-        }, {new: true});
-        res.json(findProduct);
+        let images = urls.map((file) =>  file);
+        
+        // let findProduct = await Product.findByIdAndUpdate(id, {
+        //     images: urls.map((file) =>  file.url)
+        // }, {new: true});
+        res.json(images);
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+}
+
+
+
+
+
+export const deleteImages = async (req, res) => {
+    // public_id of the image
+    const {id} = req.params;
+    try {
+        const uploader = await cloudinaryDeleteImg(id, "images");
+        console.log(uploader)
+        res.json({message: "Deleted"});
     }
     catch (error) {
         throw new Error(error);
