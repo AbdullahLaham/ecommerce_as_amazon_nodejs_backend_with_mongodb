@@ -33,15 +33,14 @@ const userSchema = new mongoose.Schema({
         default: false,
     },
     cart: {
-        type: Array,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Cart",
         default: [],
-
-
     },
 
-    address: [{
-        type: mongoose.Schema.Types.ObjectId, ref: "Address",
-    }],
+    address: {
+        type: String,
+    },
 
     wishlist: [{type: mongoose.Schema.Types.ObjectId, ref: "Product",}],
     refreshToken: {
@@ -79,8 +78,6 @@ userSchema.methods.createPasswordResetToken = async function () {
     this.passwordResetExpires = Date.now() + 30 * 60 * 1000; // 10 minutes
     return resetToken;
 }
-
-
 
 
 

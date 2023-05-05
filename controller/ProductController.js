@@ -2,6 +2,10 @@ import Product from '../models/ProductModel.js';
 import User from '../models/UserModel.js';
 import asyncHandler from 'express-async-handler';
 import slugify from 'slugify';
+import { validateMongoDBID } from '../utils/validateMongodbId.js';
+import {cloudinaryUploadImg} from '../utils/cloudinary.js';
+import fs from 'fs';
+
 export const createProduct = asyncHandler(async (req, res) => {
     try {
         if (req.body.title) {
@@ -184,6 +188,26 @@ export const rating =  asyncHandler(async (req, res) => {
 
 
 
-
+export const uploadImages = async (req, res) => {
+    const {id} = req.params;
+    validateMongoDBID(id);
+    try {
+        const uploader = (path) => cloudinaryUploadImg(path, "images");
+        let urls = [];
+        let files = req.files;
+        for (let file of files) {
+            let {path} = file;
+            let newPath = await uploader(path);
+            urls.push(newPath);
+        }
+        let findProduct = await Product.findByIdAndUpdate(id, {
+            images: urls.map((file) =>  file.url)
+        }, {new: true});
+        res.json(findProduct);
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+}
 
 

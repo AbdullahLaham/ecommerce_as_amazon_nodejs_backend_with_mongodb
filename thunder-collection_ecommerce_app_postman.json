@@ -1,0 +1,1188 @@
+{
+    "info": {
+        "name": "ecommerce_app",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "User",
+            "item": [
+                {
+                    "name": "update user",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:5000/user/6431dc1b8943002bed33ae61",
+                            "path": [
+                                "user",
+                                "6431dc1b8943002bed33ae61"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n    \"firstname\": \"abdullah\",\n    \"lastname\": \"lahham\",\n    \"email\": \"abed26194@gmail.com\",\n    \"mobile\": \"0212\",\n    \"password\": \"123\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjI0ODI5MCwiZXhwIjoxNjgyNTA3NDkwfQ.VuzoU1IGRC5FokFJuVZshygYpFg5zyulIUzAqbHkAec",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "login",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:5000/user/login",
+                            "path": [
+                                "user",
+                                "login"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n    \"email\": \"tt@tt.tt\",\n    \"password\": \"123456\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "register",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:5000/user/register",
+                            "path": [
+                                "user",
+                                "register"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n   \"firstname\": \"abood\",\n    \"lastname\": \"lahham\",\n    \"email\": \"abed@gmail.com\",\n    \"mobile\": \"58\",\n    \"password\": \"123456\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "all users",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:5000/user/all-users",
+                            "path": [
+                                "user",
+                                "all-users"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzFkYzFiODk0MzAwMmJlZDMzYWU2MSIsImlhdCI6MTY4MDk4OTIyNiwiZXhwIjoxNjgxMjQ4NDI2fQ.QwItB8V_FXnw2dSNzSF0ZH70f1_8dCuDVMtdVs2Lpec",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "block user",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:5000/user/block-user/6431dc1b8943002bed33ae61",
+                            "path": [
+                                "user",
+                                "block-user",
+                                "6431dc1b8943002bed33ae61"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MTE2MjIyMiwiZXhwIjoxNjgxNDIxNDIyfQ.JVlU4dNO9RX2agdsvoNXKdCH2Hcz_5_UA42RtcfMVCc",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "unblock user",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:5000/user/unblock-user/6431dc1b8943002bed33ae61",
+                            "path": [
+                                "user",
+                                "unblock-user",
+                                "6431dc1b8943002bed33ae61"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MTE2MjIyMiwiZXhwIjoxNjgxNDIxNDIyfQ.JVlU4dNO9RX2agdsvoNXKdCH2Hcz_5_UA42RtcfMVCc",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "refresh token",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:5000/user/refresh",
+                            "path": [
+                                "user",
+                                "refresh"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MTE2NTA0NiwiZXhwIjoxNjgxNDI0MjQ2fQ.UVZnAFjSbOB-OAWqPiEg_77pBagAUBI8Zh52HKn8ULk",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "logout",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:5000/user/logout",
+                            "path": [
+                                "user",
+                                "logout"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        }
+                    }
+                },
+                {
+                    "name": "updatePassword",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:5000/user/forgot-password-token",
+                            "path": [
+                                "user",
+                                "forgot-password-token"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"email\": \"abed26194@gmail.com\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjI0ODI5MCwiZXhwIjoxNjgyNTA3NDkwfQ.VuzoU1IGRC5FokFJuVZshygYpFg5zyulIUzAqbHkAec",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product",
+            "item": [
+                {
+                    "name": "create Product",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:5000/product/create",
+                            "path": [
+                                "product",
+                                "create"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "\n{\n  \"title\": \"Lenovo pad\",\n  \"price\": 10,\n  \"quantity\": 20,\n  \"description\": \"hhh\",\n  \"category\": \"Apple\",\n  \"brand\": \"Apple\",\n  \"color\": \"Red\"\n}\n\n"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjYwMTg2MiwiZXhwIjoxNjgyODYxMDYyfQ.URBxZyRH7PulBlF1egFfEBTwRdz2NoVDzNH1CmkVlJI",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get product",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:5000/product",
+                            "path": [
+                                "product"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        }
+                    }
+                },
+                {
+                    "name": "delete product",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://localhost:5000/product/64426cf31181782da3202b47",
+                            "path": [
+                                "product",
+                                "64426cf31181782da3202b47"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjA3NDgwOSwiZXhwIjoxNjgyMzM0MDA5fQ.n_awOxIKYp3N14wa08d_oOZXeZNIqKIki4DmoRH1tss",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "add to wishlist",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:5000/product/wishlist/",
+                            "path": [
+                                "product",
+                                "wishlist"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"productId\": \"644d32b95c966c0ed340b015\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4Mjc4MDA5MCwiZXhwIjoxNjgzMDM5MjkwfQ.POIDw9a7BL5UAIaqJlgXqbPKvtFD31OZFwzHi6J0tAQ",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "rating",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:5000/product/rating/",
+                            "path": [
+                                "product",
+                                "rating"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"prodId\": \"644d7767e49ad970f831cc71\",\n  \"comment\": \"hello\",\n  \"star\": 2\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGQ3ODExNTBlZDUyODRhN2ExZjhhMiIsImlhdCI6MTY4MjgwMTc5NywiZXhwIjoxNjgzMDYwOTk3fQ.5rdUCjaIHPjK3W9JtKJuln2FZj38E_etVTSWUe5iBGA",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "upload image",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:5000/product/upload/644d7767e49ad970f831cc71",
+                            "path": [
+                                "product",
+                                "upload",
+                                "644d7767e49ad970f831cc71"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"images\": \"j\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjYwMTg2MiwiZXhwIjoxNjgyODYxMDYyfQ.URBxZyRH7PulBlF1egFfEBTwRdz2NoVDzNH1CmkVlJI",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Blog",
+            "item": [
+                {
+                    "name": "create blog",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:5000/blog",
+                            "path": [
+                                "blog"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"title\": \"blog 6\",\n  \"category\": \"Travel\",\n  \"description\": \"desc 6\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjMyNjQ2OSwiZXhwIjoxNjgyNTg1NjY5fQ.Vwv_ANL96nSr_4YXYwST_5HrqSmkirjCfnIvsZ3HD6s",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "update blog",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:5000/blog/6446442091502428f85d220c",
+                            "path": [
+                                "blog",
+                                "6446442091502428f85d220c"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"description\": \"desc4\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjMyNjQ2OSwiZXhwIjoxNjgyNTg1NjY5fQ.Vwv_ANL96nSr_4YXYwST_5HrqSmkirjCfnIvsZ3HD6s",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get blog",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:5000/blog/64469e99931fbe14bfb7c282",
+                            "path": [
+                                "blog",
+                                "64469e99931fbe14bfb7c282"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        }
+                    }
+                },
+                {
+                    "name": "get all blogs",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:5000/blog",
+                            "path": [
+                                "blog"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        }
+                    }
+                },
+                {
+                    "name": "delete blog",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://localhost:5000/blog/64464aebd84fb5b9cd965b4d",
+                            "path": [
+                                "blog",
+                                "64464aebd84fb5b9cd965b4d"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjMyNjQ2OSwiZXhwIjoxNjgyNTg1NjY5fQ.Vwv_ANL96nSr_4YXYwST_5HrqSmkirjCfnIvsZ3HD6s",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "likeBlog",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:5000/blog/likes",
+                            "path": [
+                                "blog",
+                                "likes"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"blogId\": \"64469e99931fbe14bfb7c282\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjMyNjQ2OSwiZXhwIjoxNjgyNTg1NjY5fQ.Vwv_ANL96nSr_4YXYwST_5HrqSmkirjCfnIvsZ3HD6s",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "dislike blog",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:5000/blog/dislikes/",
+                            "path": [
+                                "blog",
+                                "dislikes"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"blogId\": \"64469e99931fbe14bfb7c282\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjMyNjQ2OSwiZXhwIjoxNjgyNTg1NjY5fQ.Vwv_ANL96nSr_4YXYwST_5HrqSmkirjCfnIvsZ3HD6s",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "category",
+            "item": [
+                {
+                    "name": "create category",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:5000/category",
+                            "path": [
+                                "category"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"title\": \"watch\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjMyNjQ2OSwiZXhwIjoxNjgyNTg1NjY5fQ.Vwv_ANL96nSr_4YXYwST_5HrqSmkirjCfnIvsZ3HD6s",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "update category",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:5000/category/6449144cfa13fd82c2b7529a",
+                            "path": [
+                                "category",
+                                "6449144cfa13fd82c2b7529a"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"title\": \"mobile\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjMyNjQ2OSwiZXhwIjoxNjgyNTg1NjY5fQ.Vwv_ANL96nSr_4YXYwST_5HrqSmkirjCfnIvsZ3HD6s",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "delete category",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://localhost:5000/category/644917e18d108c8079332ca0",
+                            "path": [
+                                "category",
+                                "644917e18d108c8079332ca0"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjMyNjQ2OSwiZXhwIjoxNjgyNTg1NjY5fQ.Vwv_ANL96nSr_4YXYwST_5HrqSmkirjCfnIvsZ3HD6s",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get category",
+                    "request": {
+                        "method": "GET"
+                    }
+                },
+                {
+                    "name": "get all categories",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:5000/category",
+                            "path": [
+                                "category"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Blog Category",
+            "item": [
+                {
+                    "name": "create category",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:5000/blogcategory",
+                            "path": [
+                                "blogcategory"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"title\": \"watch\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjU5NTA4NiwiZXhwIjoxNjgyODU0Mjg2fQ.GMDV6dXk-XaUBYBawrKzfa0rOUrx4MMT8dgj3V-cP1c",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "update category",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:5000/blogcategory/644a5d54a5615d5419607459",
+                            "path": [
+                                "blogcategory",
+                                "644a5d54a5615d5419607459"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"title\": \"mobiles\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjU5NTA4NiwiZXhwIjoxNjgyODU0Mjg2fQ.GMDV6dXk-XaUBYBawrKzfa0rOUrx4MMT8dgj3V-cP1c",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "delete category",
+                    "request": {
+                        "method": "GET"
+                    }
+                },
+                {
+                    "name": "get category",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:5000/blogcategory/644a5d54a5615d5419607459",
+                            "path": [
+                                "blogcategory",
+                                "644a5d54a5615d5419607459"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        }
+                    }
+                },
+                {
+                    "name": "get all categories",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:5000/blogcategory",
+                            "path": [
+                                "blogcategory"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Brand",
+            "item": [
+                {
+                    "name": "create Brand",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:5000/brand",
+                            "path": [
+                                "brand"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"title\": \"watch\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjYwMTg2MiwiZXhwIjoxNjgyODYxMDYyfQ.URBxZyRH7PulBlF1egFfEBTwRdz2NoVDzNH1CmkVlJI",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "update brand",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:5000/blogcategory/644a5d54a5615d5419607459",
+                            "path": [
+                                "blogcategory",
+                                "644a5d54a5615d5419607459"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"title\": \"mobiles\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjU5NTA4NiwiZXhwIjoxNjgyODU0Mjg2fQ.GMDV6dXk-XaUBYBawrKzfa0rOUrx4MMT8dgj3V-cP1c",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "delete brand",
+                    "request": {
+                        "method": "GET"
+                    }
+                },
+                {
+                    "name": "get brand",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:5000/blogcategory/644a5d54a5615d5419607459",
+                            "path": [
+                                "blogcategory",
+                                "644a5d54a5615d5419607459"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        }
+                    }
+                },
+                {
+                    "name": "get all brands",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:5000/brand",
+                            "path": [
+                                "brand"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Coupon",
+            "item": [
+                {
+                    "name": "create Coupon",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:5000/coupon",
+                            "path": [
+                                "coupon"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"Abood\",\n  \"expiry\": \"1682861062\",\n  \"discount\": 40\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjYwMTg2MiwiZXhwIjoxNjgyODYxMDYyfQ.URBxZyRH7PulBlF1egFfEBTwRdz2NoVDzNH1CmkVlJI",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "update coupon",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:5000/coupon/644d8bf04d6ff80c5c2070c8",
+                            "path": [
+                                "coupon",
+                                "644d8bf04d6ff80c5c2070c8"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"Abed\",\n  \"expiry\": \"1682861062\",\n  \"discount\": 30\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjU5NTA4NiwiZXhwIjoxNjgyODU0Mjg2fQ.GMDV6dXk-XaUBYBawrKzfa0rOUrx4MMT8dgj3V-cP1c",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "delete coupon",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://localhost:5000/coupon/644e1a2c0a0c4c8501652345",
+                            "path": [
+                                "coupon",
+                                "644e1a2c0a0c4c8501652345"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjYwMTg2MiwiZXhwIjoxNjgyODYxMDYyfQ.URBxZyRH7PulBlF1egFfEBTwRdz2NoVDzNH1CmkVlJI",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get all coupons",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:5000/coupon",
+                            "path": [
+                                "coupon"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ3ZmU3ZDRkOGY5NTAyNWFmOTVmYSIsImlhdCI6MTY4MjYwMTg2MiwiZXhwIjoxNjgyODYxMDYyfQ.URBxZyRH7PulBlF1egFfEBTwRdz2NoVDzNH1CmkVlJI",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
