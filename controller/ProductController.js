@@ -195,16 +195,19 @@ export const uploadImages = async (req, res) => {
     // validateMongoDBID(id);
 
     try {
+        console.log("hello")
         const uploader = (path) => cloudinaryUploadImg(path, "images");
         let urls = [];
         let files = req.files;
+        console.log(files, 'ddddddddddd');
         for (let file of files) {
             let {path} = file;
             let newPath = await uploader(path);
             urls.push(newPath);
         }
         let images = urls.map((file) =>  file);
-        
+        console.log('imagesff44444444');
+
         // let findProduct = await Product.findByIdAndUpdate(id, {
         //     images: urls.map((file) =>  file.url)
         // }, {new: true});

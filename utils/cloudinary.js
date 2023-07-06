@@ -5,7 +5,16 @@ cloudinary.config({
     api_key: "783212276674146",
     api_secret: "pnoTSMcSVZ4f6SNl0GReGaRsPL0"
   });
+
+
+
+
+
   export const cloudinaryUploadImg = async (fileUploads, vv) => {
+
+    console.log('fileUploads', fileUploads);
+
+    
     return new Promise((resolve) => {
         cloudinary.uploader.upload(fileUploads, (result) => {
             resolve({
@@ -18,6 +27,7 @@ cloudinary.config({
         })
     })
   }
+
   export const cloudinaryDeleteImg = async (fileToDelete, vv) => {
     return new Promise((resolve) => {
         cloudinary.uploader.destroy(fileToDelete, (result) => {

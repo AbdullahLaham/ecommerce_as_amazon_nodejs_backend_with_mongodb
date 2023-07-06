@@ -29,6 +29,7 @@ const multerFilter = (req, file, cb) => {
     }
 }
 export const productImageResize = async (req, res, next) => {
+    console.log(req.files, 'rrrrrrr')
     if (!req.files) return next();
     await Promise.all(req.files.map(async (file) => {
         await sharp(file.path).resize(300, 300)

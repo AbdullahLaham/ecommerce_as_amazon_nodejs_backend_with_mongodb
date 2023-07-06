@@ -1,5 +1,5 @@
 import express from 'express';
-import { applyCoupon, blockUser, createOrder, createUser, deleteUser, emptyCart, forgotPasswordToken, getAllUsers, getOrders, getUser, getUserCart, getWishlist, handleRefreshToken, loginAdminUser, loginUser, logout, resetPassword, saveAddress, unblockUser, updateOrderStatus, updatePassword, updateUser, userCart } from '../controller/UserController.js';
+import { applyCoupon, blockUser, createOrder, createUser, deleteUser, emptyCart, forgotPasswordToken, getAllUsers, getOrders, getUser, getUserCart, getUserOrders, getWishlist, handleRefreshToken, loginAdminUser, loginUser, logout, resetPassword, saveAddress, unblockUser, updateOrderStatus, updatePassword, updateUser, userCart } from '../controller/UserController.js';
 import { authMiddleware, isAdmin } from '../middlewares/authMiddleware.js';
 
 const router = express();
@@ -18,6 +18,7 @@ router.post('/cart/cash-order', authMiddleware, createOrder)
 router.get('/wishlist', authMiddleware, getWishlist);
 router.get('/cart', authMiddleware, getUserCart);
 router.get('/get-orders', authMiddleware, getOrders);
+router.get('/get-orders/:id', authMiddleware, getUserOrders);
 router.get('/all-users',authMiddleware, isAdmin ,  getAllUsers);
 router.get('/refresh', handleRefreshToken);
 router.get('/:id', getUser);

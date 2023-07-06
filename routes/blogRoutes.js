@@ -10,6 +10,7 @@ const router = express();
 router.post('/', authMiddleware, isAdmin, createBlog);
 router.put('/likes', authMiddleware, likeBlog);
 router.put('/dislikes', authMiddleware, disLikeBlog);
+
 router.put('/upload/:id', authMiddleware, isAdmin, uploadPhoto.array("images", 2), blogImageResize, uploadImages);
 
 router.put('/:id', authMiddleware, isAdmin, updateBlog);

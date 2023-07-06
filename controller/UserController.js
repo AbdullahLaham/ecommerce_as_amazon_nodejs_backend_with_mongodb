@@ -548,12 +548,38 @@ export const getOrders = asyncHandler(async (req, res) => {
     const {_id} = req.user;
     validateMongoDBID(_id);
     try {
-        let order = await Order.find({orderBy: _id}).populate("products.product");
+        let order = await Order.find({orderBy: _id}).populate("products.product").populate('orderBy');
         res.json(order);
     } catch (error) {
         res.status(500).json({ message: error.message, sucess: false },);
     }
 });
+
+
+
+export const getAllOrders = asyncHandler(async (req, res) => {
+    const {_id} = req.user;
+    validateMongoDBID(_id);
+    try {
+        let order = await Order.find({orderBy: _id}).populate("products.product").populate('orderBy');
+        res.json(order);
+    } catch (error) {
+        res.status(500).json({ message: error.message, sucess: false },);
+    }
+});
+
+export const getUserOrders = asyncHandler(async (req, res) => {
+    const {id} = req.params;
+    validateMongoDBID(id);
+    try {
+        let order = await Order.findById(id).populate("products.product").populate('orderBy');
+        console.log(order, 'uu')
+        res.json(order);
+    } catch (error) {
+        res.status(500).json({ message: error.message, sucess: false },);
+    }
+});
+
 
 
 

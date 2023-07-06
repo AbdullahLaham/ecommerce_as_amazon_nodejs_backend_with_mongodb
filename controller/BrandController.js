@@ -1,4 +1,4 @@
-// import Category from '../models/CategoryModel.js';
+// import Brand from '../models/CategoryModel.js';
 import Brand from '../models/BrandModel.js'
 import asyncHandler from 'express-async-handler';
 import { validateMongoDBID } from '../utils/validateMongodbId.js';
@@ -6,8 +6,8 @@ import { validateMongoDBID } from '../utils/validateMongodbId.js';
 
 export const createBrand = asyncHandler(async (req, res) => {
     try {
-        let newCategory = await Brand.create(req.body);
-        res.json(newCategory);
+        let newBrand = await Brand.create(req.body);
+        res.json(newBrand);
     } catch  (error) {
         throw new Error(error);
     }
@@ -17,9 +17,9 @@ export const updateBrand  = asyncHandler(async (req, res) => {
     const {id} = req.params;
     validateMongoDBID(id);
     try {
-        let updatedCategory = await Brand.findByIdAndUpdate(id, req.body, {new: true});
+        let updatedbBrand = await Brand.findByIdAndUpdate(id, req.body, {new: true});
 
-        res.json(updatedCategory);
+        res.json(updatedbBrand);
     } catch  (error) {
         throw new Error(error);
     }
@@ -29,9 +29,9 @@ export const deleteBrand  = asyncHandler(async (req, res) => {
     const {id} = req.params;
     validateMongoDBID(id);
     try {
-        let deletedCategory = await Brand.findByIdAndDelete(id);
+        let deletedBrand = await Brand.findByIdAndDelete(id);
 
-        res.json(deletedCategory);
+        res.json(deletedBrand);
     }
     catch  (error) {
         throw new Error(error);
@@ -42,9 +42,9 @@ export const getBrand  = asyncHandler(async (req, res) => {
     const {id} = req.params;
     validateMongoDBID(id);
     try {
-        let category = await Brand.findById(id);
+        let brand = await Brand.findById(id);
 
-        res.json(category);
+        res.json(brand);
     }
     catch  (error) {
         throw new Error(error);
@@ -54,9 +54,9 @@ export const getBrand  = asyncHandler(async (req, res) => {
 export const getAllBrands = asyncHandler(async (req, res) => {
 
     try {
-        let categories = await Brand.find();
+        let brands = await Brand.find();
 
-        res.json(categories);
+        res.json(brands);
     }
     catch  (error) {
         throw new Error(error);

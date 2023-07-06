@@ -14,7 +14,7 @@ export const createBlog = asyncHandler(async (req, res) =>   {
         throw new Error(error);
     }
 }
-)
+);
 
 export const updateBlog = asyncHandler(async (req, res) =>   {
     let {id} = req.params;
@@ -32,7 +32,7 @@ export const getBlog = asyncHandler(async (req, res) => {
     const {id} = req.params;
     try {
         let blog = await Blog.findById(id).populate('likes').populate('dislikes');
-        let updateBlog = await Blog.findByIdAndUpdate(id, { $inc: {numViews: 1} }, {new: true});
+        // let updateBlog = await Blog.findByIdAndUpdate(id, { "$inc": {"numViews": 1} }, {new: true});
         res.json(blog);
     } catch (error) {
         throw new Error(error);

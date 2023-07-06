@@ -46,3 +46,13 @@ export const deleteCoupon = asyncHandler(async (req, res) => {
         throw new Error(error);
     }
 });
+export const getCoupon = asyncHandler(async (req, res) => {
+    try {
+        const {id} = req.params;
+        const coupon = await Coupon.findById(id);
+        res.json(coupon);
+    }
+    catch  (error) {
+        throw new Error(error);
+    }
+})

@@ -33,7 +33,7 @@ const ProductSchema = new mongoose.Schema({
 
     brand: {
         type: String,
-        enum: ["Apple", "Samsung", "Lenovo", "Mp",],
+        // enum: ["Apple", "Samsung", "Lenovo", "Mp",],
     },
 
     quantity: {
@@ -48,21 +48,19 @@ const ProductSchema = new mongoose.Schema({
         select: false,
     },
 
-    images: {
-        type: Array,
-    },
-
-    // color: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Color',
-    // },
+    images: [
+            {
+                public_id: String,
+                url: String
+            }
+        ],
 
     color: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Color',
     }],
 
-    tags: [],
+    tag: String,
 
     ratings: [
         {
