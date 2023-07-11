@@ -38,15 +38,19 @@ export const loginUser = asyncHandler(async (req, res) => {
     // check if user exists or not
     const user = await User.findOne({ email });
     const token = generateNewToken(user?._id);
-
+console.log(user._doc)
     const updatedUser = await User.findByIdAndUpdate(user?._id, {
         refreshToken: token,
     }, { new: true, });
 
+
     res.cookie("refreshToken", token, {
         httpOnly: true,
         maxAge: 72 * 60 * 60 * 1000,
-    })
+    });
+
+
+    
     const { password, ...otherData } = user?._doc;
     console.log(otherData);
     if (user?.email && user.isPasswordMatched(password)) {
@@ -362,7 +366,7 @@ export const getWishlist = asyncHandler(async (req, res) => {
 
 export const userCart = asyncHandler(async (req, res) => {
     const {_id} = req.user;
-    const {cart} = req.body;
+    const {productId, color, quantity, price} = req.body;
 
     validateMongoDBID(_id)
     
@@ -370,7 +374,7 @@ export const userCart = asyncHandler(async (req, res) => {
         let products = [];
         const user = await User.findById(_id);
         // check if user already added to his cart
-        let alreadyExistsCart = await Cart.findOne({orderBy: user._id});
+        // let alreadyExistsCart = await Cart.findOne({orderBy: user._id});
         // if (!alreadyExistsCart) {
         //     let newCart = await Cart.create(cart);
 
@@ -388,36 +392,18 @@ export const userCart = asyncHandler(async (req, res) => {
         //     }, {new: true});
         //     res.json(updatedUser);
         // }
-        if (alreadyExistsCart) {
-            await alreadyExistsCart.deleteOne();
-        }
-
-        for (let i = 0; i < cart.length; i++) {
-            let object = {};
-            object.product = cart[i]._id;
-            object.count = cart[i].count;
-            object.color = cart[i].color;
-            let getPrice = await Product.findById(cart[i]?._id).select("price").exec();
-            object.price = getPrice.price;
-            products.push(object);
-        }
-        let cartTotal = 0;
-        // for (let i = 0; i < products.length; i++) {
-
-        // }
-        products.forEach((product) => {
-            cartTotal += product.price * product.count;
-        });
-        console.log(products, cartTotal);
-
+        
         let newCart = await new Cart({
-            products: products,
-            cartTotal,
-            orderBy: user?._id,
+            userId: _id,
+            productId,
+            color,
+            price,
+            quantity,
         }).save();
         await User.findByIdAndUpdate(_id, {
             cart: newCart?._id
         }, {new: true});
+        
         res.json(newCart);
 
     } catch (error) {

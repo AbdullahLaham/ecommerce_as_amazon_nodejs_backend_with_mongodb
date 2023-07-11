@@ -3,27 +3,46 @@ import mongoose, { mongo } from "mongoose";
 // Declare the Schema of the mongo Model
 
 const cartSchema = new mongoose.Schema({
-    products: [
-        {
-            product: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "Product",
-            },
-            count: Number,
-            color: String,
-            price: Number,
-        },
+    // products: [
+    //     {
+    //         product: {
+    //             type: mongoose.Schema.Types.ObjectId,
+    //             ref: "Product",
+    //         },
+    //         count: Number,
+    //         color: String,
+    //         price: Number,
+    //     },
         
-    ],
-    cartTotal: Number,
-    paymentIntent: {},
+    // ],
+    // cartTotal: Number,
+    // paymentIntent: {},
 
-    totalAfterDiscount: Number,
-    orderBy: {
+    // totalAfterDiscount: Number,
+    // orderBy: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "User", 
+    // }
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User", 
+        ref: "User",
+    },
+    productId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+    },
+    quantity: {
+        type: Number,
+        required: true,
+    },
+    price: {
+        type: Number,
+        required: true,
+    },
+    color: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Color",
     }
-    
 
 
 },
