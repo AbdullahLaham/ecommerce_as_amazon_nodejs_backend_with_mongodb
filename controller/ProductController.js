@@ -55,7 +55,7 @@ export const getAProduct = asyncHandler(async (req, res) => {
     const {id} = req.params;
    
     try {
-        const product = await Product.findById(id);
+        const product = await Product.findById(id).populate('color');
         res.status(200).json(product)
     } catch(error) {
         throw new Error(error);
@@ -153,13 +153,15 @@ export const addToWishlist = asyncHandler(async (req, res) => {
 
 
 
+
 export const rating =  asyncHandler(async (req, res) => {
     const {_id: userId} = req.user;
-    const {prodId, star, comment} = req.body;
-    console.log('he;;p')
+    const {prodId, rating: star, comment} = req.body;
+    console.log(prodId, star, comment)
     try {
         const product = await Product.findById(prodId);
-        let alreadyRated = product.ratings.find((rating) => rating.postedBy.toString() == userId.toString());
+        console.log(product);
+        let alreadyRated = product?.ratings.find((rating) => rating.postedBy.toString() == userId.toString());
         if (alreadyRated) {
             await Product.updateOne({
                 ratings: {$elemMatch: alreadyRated}
@@ -177,9 +179,12 @@ export const rating =  asyncHandler(async (req, res) => {
         let totalrating  = getAllRatings.ratings.length;
         let ratingssum = getAllRatings.ratings.map((item) => item.star).reduce((prev, curr) => prev + curr, 0);
         let actualRating = Math.round(ratingssum / totalrating);
+
+
         let ratedProduct = await Product.findByIdAndUpdate(prodId, {
             totalrating: actualRating
         }, {new: true});
+
         res.json(ratedProduct);
 
     } catch (error) {

@@ -15,6 +15,8 @@ import brandRouter from './routes/BrandRoutes.js';
 import couponRouter from './routes/couponRoutes.js';
 import colorRouter from './routes/colorRoutes.js';
 import enqRouter from './routes/enqRoutes.js';
+import stripeRouter from './routes/stripeRoutes.js'
+import { authMiddleware } from './middlewares/authMiddleware.js';
 const app = express();
 // morgan is to show the requests that comes to your server in the terminal
 app.use(morgan("dev"));
@@ -28,6 +30,7 @@ const PORT = process.env.PORT || 4000;
 // });
 app.use('/user', authRouter);
 app.use('/product', productRouter);
+app.use('/stripe', stripeRouter);
 app.use('/blog', blogRouter);
 app.use('/category', categoryRouter);
 app.use('/blogcategory', blogCategoryRouter);

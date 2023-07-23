@@ -10,6 +10,7 @@ router.get('/:id', getAProduct);
 router.get('/', getAllProducts);
 
 router.put('/wishlist', authMiddleware, addToWishlist);
+// router.put('/wishlist/:id', authMiddleware, deleteFromWishlist);
 router.put('/upload', authMiddleware, isAdmin, uploadPhoto.array("images", 10), productImageResize, uploadImages);
 router.put('/rating', authMiddleware, rating);
 router.put('/:id', authMiddleware, isAdmin, updateProduct);

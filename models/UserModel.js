@@ -33,13 +33,14 @@ const userSchema = new mongoose.Schema({
         default: false,
     },
     cart: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Cart",
+        type: Array,
+        default: [],
+        
     },
 
-    address: {
-        type: String,
-    },
+    // address: {
+    //     type: String,
+    // },
 
     wishlist: [{type: mongoose.Schema.Types.ObjectId, ref: "Product",}],
     refreshToken: {
@@ -71,14 +72,14 @@ userSchema.methods.isPasswordMatched = async function (enteredPassword) {
 
 
 userSchema.methods.createPasswordResetToken = async function () {
-    const resetToken = crypto.randomBytes(32).toString("hex");
-    this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest("hex");
-
+    const resettoken = crypto.randomBytes(32).toString("hex");
+    this.passwordResetToken = crypto
+      .createHash("sha256")
+      .update(resettoken)
+      .digest("hex");
     this.passwordResetExpires = Date.now() + 30 * 60 * 1000; // 10 minutes
-    return resetToken;
-}
+    return resettoken;
+  };
 
-
-
-
+  
 export default mongoose.model("User", userSchema);
