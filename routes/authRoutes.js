@@ -1,5 +1,5 @@
 import express from 'express';
-import { applyCoupon, blockUser, createOrder, createUser, deleteCartItem, deleteUser, emptyCart, forgotPasswordToken, getAllUsers, getAnOrder, getOrders, getUser, getUserCart, getUserOrders, getWishlist, handleRefreshToken, loginAdminUser, loginUser, logout, resetPassword, saveAddress, unblockUser, updateCartItem, updateOrderStatus, updatePassword, updateUser, userCart } from '../controller/UserController.js';
+import { applyCoupon, blockUser, createOrder, createUser, deleteCartItem, deleteUser, emptyCart, forgotPasswordToken, getAllUsers, getAnOrder, getMonthwiseOrderCount, getMonthwiseOrderIncome, getOrders, getUser, getUserCart, getUserOrders, getWishlist, handleRefreshToken, loginAdminUser, loginUser, logout, resetPassword, saveAddress, unblockUser, updateCartItem, updateOrderStatus, updatePassword, updateUser, userCart, getYearlyTotalOrders } from '../controller/UserController.js';
 import { authMiddleware, isAdmin } from '../middlewares/authMiddleware.js';
 
 const router = express();
@@ -10,8 +10,9 @@ router.post('/admin-login', loginAdminUser);
 router.post('/cart', authMiddleware, userCart);
 router.post('/cart/create-order', authMiddleware, createOrder);
 router.post('/forgot-password-token', forgotPasswordToken);
-
-
+router.get('/getMonthwiseOrderIncome', getMonthwiseOrderIncome);
+router.get('/getMonthwiseOrderCount', getMonthwiseOrderCount);
+router.get('/getYearlyTotalOrders', getYearlyTotalOrders);
 // router.post('/cart/applycoupon', authMiddleware, applyCoupon);
 
 

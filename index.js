@@ -16,7 +16,10 @@ import couponRouter from './routes/couponRoutes.js';
 import colorRouter from './routes/colorRoutes.js';
 import enqRouter from './routes/enqRoutes.js';
 import stripeRouter from './routes/stripeRoutes.js'
+import chatRouter from './routes/ChatRoute.js';
+import messageRouter from './routes/MessageRoute.js';
 import { authMiddleware } from './middlewares/authMiddleware.js';
+import ws, {WebSocketServer} from 'ws';
 const app = express();
 // morgan is to show the requests that comes to your server in the terminal
 app.use(morgan("dev"));
@@ -38,10 +41,30 @@ app.use('/brand', brandRouter);
 app.use('/coupon', couponRouter);
 app.use('/color', colorRouter);
 app.use('/enquiry', enqRouter);
-
 app.use(notFound);
 app.use(errorHandler);
-app.listen(PORT, () => {
+app.use('/chat', chatRouter);
+app.use('/messages', messageRouter)
+
+
+
+let server = app.listen(PORT, () => {
     console.log('server is running at port ', PORT);
 });
+
+// const wss = new WebSocketServer({port: 4000});
+
+// wss.on('connection', (connection, req) => {
+//     console.log('connected');
+//     // connection.send('hello')
+//     // const cookies = req.headers.cookie;
+//     console.log(req.headers.token, 'tttttttttttt');
+
+// });
+
+
+
+
+
+
 dbConnect();

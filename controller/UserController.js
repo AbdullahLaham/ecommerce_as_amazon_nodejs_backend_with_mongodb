@@ -33,6 +33,28 @@ export const createUser = asyncHandler(async (req, res) => {
     }
 });
 
+
+// export const getUser = asyncHandler(async (req, res) => {
+    
+
+//         const {id} = req.params;
+//         try {
+            
+//             const user = await User.findById(id);
+//             if (user) {
+//                 res.status(200).json(user);
+//             }
+//             else {
+//                 // user Already exists
+//                 throw new Error("No user with this data");
+//             }
+//         } catch (error) {
+//             res.status(500).json({ message: error.message, sucess: false },);
+//         }
+     
+// });
+
+
 export const loginUser = asyncHandler(async (req, res) => {
     const { email } = req.body;
     console.log(email);
@@ -380,7 +402,10 @@ export const userCart = asyncHandler(async (req, res) => {
     validateMongoDBID(_id);
     
     try {
-       
+       let cartItem = await Cart.findOne({productId});
+       if (cartItem?._id) {
+        res.status(500).json("Product Added Already to the cart");
+       }
         let newCart = await new Cart({
             userId: _id,
             productId,
@@ -610,6 +635,130 @@ export const updateOrderStatus = asyncHandler(async (req, res) => {
 
 
 
+
+export const getMonthwiseOrderIncome = asyncHandler(async (req, res) => {
+    let monthNames = ["January","February","March","April","May","June","July",
+    "August","September","October","November","December"];
+    let d = new Date();
+    let endDate = "";
+    d.setDate(1);
+    for (let i = 0; i< 11; i++) {
+        d.setMonth(d.getMonth() - 1);
+        endDate = monthNames[d.getMonth()] + " " + d.getFullYear();
+        console.log(endDate)
+    }
+    const data = await Order.aggregate([
+        {
+            $match: {
+                createdAt: {
+                    $lte: new Date(),
+                    $gte: new Date(endDate),
+                }
+            }
+        },
+        {
+            $group: {
+                _id: {
+                    month: "$month",
+                },
+                amount: {
+                    $sum: "$totalPriceAfterDiscount",
+                }
+            }
+        }
+    ]);
+
+    res.json(data);
+
+})
+
+
+
+
+
+export const getMonthwiseOrderCount = asyncHandler(async (req, res) => {
+    let monthNames = ["January","February","March","April","May","June","July",
+    "August","September","October","November","December"];
+    let d = new Date();
+    let endDate = "";
+    d.setDate(1);
+    for (let i = 0; i< 11; i++) {
+        d.setMonth(d.getMonth() - 1);
+        endDate = monthNames[d.getMonth()] + " " + d.getFullYear();
+        console.log(endDate)
+    }
+    const data = await Order.aggregate([
+        {
+            $match: {
+                createdAt: {
+                    $lte: new Date(),
+                    $gte: new Date(endDate),
+                }
+            }
+        },
+        {
+            $group: {
+                _id: {
+                    month: "$month",
+                },
+                count: {
+                    $sum: 1,
+                },
+                
+            }
+        }
+    ]);
+
+    res.json(data);
+
+})
+
+
+
+
+
+
+
+
+
+export const getYearlyTotalOrders = asyncHandler(async (req, res) => {
+    let monthNames = ["January","February","March","April","May","June","July",
+    "August","September","October","November","December"];
+    let d = new Date();
+    let endDate = "";
+    d.setDate(1);
+    for (let i = 0; i< 11; i++) {
+        d.setMonth(d.getMonth() - 1);
+        endDate = monthNames[d.getMonth()] + " " + d.getFullYear();
+        console.log(endDate)
+    }
+    const data = await Order.aggregate([
+        {
+            $match: {
+                createdAt: {
+                    $lte: new Date(),
+                    $gte: new Date(endDate),
+                }
+            }
+        },
+        {
+            $group: {
+                _id: {
+                    month: "$month",
+                },
+                count: {
+                    $sum: 1,
+                },
+                amount: {
+                    $sum: "$totalPriceAfterDiscount",
+                }
+            }
+        }
+    ]);
+
+    res.json(data);
+
+})
 
 
 

@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { addToWishlist, createProduct, deleteImages, deleteProduct, getAProduct, getAllProducts, rating, updateProduct, uploadImages } from '../controller/ProductController.js';
+import {createProduct, deleteImages, deleteProduct, getAProduct, getAllProducts, rating, updateProduct, uploadImages, addToWishlist } from '../controller/ProductController.js';
 import { authMiddleware, isAdmin } from '../middlewares/authMiddleware.js';
 import { productImageResize, uploadPhoto } from '../middlewares/uploadImages.js';
 const router = express();

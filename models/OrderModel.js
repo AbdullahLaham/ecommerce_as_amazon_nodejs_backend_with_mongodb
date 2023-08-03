@@ -105,22 +105,26 @@ const orderSchema = new mongoose.Schema({
             }
         ],
 
-        paidAt: {
-            type: Date,
-            default: Date.now(),
-        },
-        totalPrice: {
-            type: Number,
-            required: true,
-        },
-        totalPriceAfterDiscount: {
-            type: Number,
-            required: true,
-        },
-        orderStatus: {
-            type: String,
-            default: "Ordered",
-        }
+    paidAt: {
+        type: Date,
+        default: Date.now(),
+    },
+    totalPrice: {
+        type: Number,
+        required: true,
+    },
+    totalPriceAfterDiscount: {
+        type: Number,
+        required: true,
+    },
+    orderStatus: {
+        type: String,
+        default: "Ordered",
+    },
+    month: {
+        type: Number,
+        default: new Date().getMonth(),
+    }
 
 },
 {
