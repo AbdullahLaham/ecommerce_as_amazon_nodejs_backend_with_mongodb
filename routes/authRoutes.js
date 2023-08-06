@@ -1,5 +1,5 @@
 import express from 'express';
-import { applyCoupon, blockUser, createOrder, createUser, deleteCartItem, deleteUser, emptyCart, forgotPasswordToken, getAllUsers, getAnOrder, getMonthwiseOrderCount, getMonthwiseOrderIncome, getOrders, getUser, getUserCart, getUserOrders, getWishlist, handleRefreshToken, loginAdminUser, loginUser, logout, resetPassword, saveAddress, unblockUser, updateCartItem, updateOrderStatus, updatePassword, updateUser, userCart, getYearlyTotalOrders } from '../controller/UserController.js';
+import { applyCoupon, blockUser, createOrder, createUser, deleteCartItem, deleteUser, emptyCart, forgotPasswordToken, getAllUsers, getAnOrder, getMonthwiseOrderCount, getMonthwiseOrderIncome, getOrders, getUser, getUserCart, getUserOrders, getWishlist, handleRefreshToken, loginAdminUser, loginUser, logout, resetPassword, saveAddress, unblockUser, updateCartItem, updateOrderStatus, updatePassword, updateUser, userCart, getYearlyTotalOrders, getAdminUsers } from '../controller/UserController.js';
 import { authMiddleware, isAdmin } from '../middlewares/authMiddleware.js';
 
 const router = express();
@@ -25,6 +25,8 @@ router.get('/order/:id', authMiddleware, getAnOrder);
 
 // router.get('/get-orders/:id', authMiddleware, getUserOrders);
 router.get('/all-users',authMiddleware, isAdmin ,  getAllUsers);
+router.get('/admin-users',authMiddleware ,  getAdminUsers);
+
 router.get('/refresh', handleRefreshToken);
 router.get('/:id', getUser);
 
