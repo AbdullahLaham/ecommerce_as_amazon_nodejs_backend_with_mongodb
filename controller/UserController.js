@@ -12,6 +12,7 @@ import { sendEmail } from './EmailController.js';
 import uniqid from 'uniqid';
 import crypto from 'crypto';
 import ChatModel from '../models/ChatModel.js';
+import bcrypt from 'bcrypt';
 
 
 
@@ -57,32 +58,63 @@ export const createUser = asyncHandler(async (req, res) => {
 
 
 export const loginUser = asyncHandler(async (req, res) => {
-    const { email } = req.body;
-    console.log(email);
+//     const { email } = req.body;
+//     console.log(email);
 
-    // check if user exists or not
-    const user = await User.findOne({ email });
-    const token = generateNewToken(user?._id);
-console.log(user._doc)
-    const updatedUser = await User.findByIdAndUpdate(user?._id, {
-        refreshToken: token,
-    }, { new: true, });
+//     // check if user exists or not
+//     const user = await User.findOne({ email });
+//     const token = generateNewToken(user?._id);
+// console.log(user._doc);
+
+//     const updatedUser = await User.findByIdAndUpdate(user?._id, {
+//         refreshToken: token,
+//     }, { new: true, });
 
 
-    res.cookie("refreshToken", token, {
-        httpOnly: true,
-        maxAge: 72 * 60 * 60 * 1000,
-    });
+//     res.cookie("refreshToken", token, {
+//         httpOnly: true,
+//         maxAge: 72 * 60 * 60 * 1000,
+//     });
 
 
     
-    const { password, ...otherData } = user?._doc;
-    console.log(otherData);
-    if (user?.email && user.isPasswordMatched(password)) {
-        res.status(200).json({ ...otherData, token: generateToken(user?._id,) });
-    } else {
-        throw new Error("Invalid Credentials");
-    }
+//     const { password, ...otherData } = user?._doc;
+//     console.log(otherData);
+//     if (user?.email && user.isPasswordMatched(password)) {
+//         res.status(200).json({ ...otherData, token: generateToken(user?._id,) });
+//     } else {
+//         throw new Error("Invalid Credentials");
+//     }
+
+
+const { email, password } = req.body;
+  // check if user exists or not
+  const findUser = await User.findOne({ email });
+  console.log(password, findUser)
+  if (findUser && (await bcrypt.compare(password, findUser?.password))) {
+    const refreshToken = await generateNewToken(findUser?._id);
+    const updateuser = await User.findByIdAndUpdate(
+      findUser._id,
+      {
+        refreshToken: refreshToken,
+      },
+      { new: true }
+    );
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      maxAge: 72 * 60 * 60 * 1000,
+    });
+    res.json({
+      _id: findUser?._id,
+      firstname: findUser?.firstname,
+      lastname: findUser?.lastname,
+      email: findUser?.email,
+      mobile: findUser?.mobile,
+      token: generateToken(findUser?._id),
+    });
+  } else {
+    throw new Error("Invalid Credentials");
+  }
 });
 
 
@@ -242,7 +274,7 @@ export const getAllUsers = asyncHandler(async (req, res) => {
 export const getAdminUsers  = asyncHandler(async (req, res) => {
 
     try {
-        const users = await User.find({
+        const users = await User.findOne({
             role: 'admin',
         });
         const chats = await ChatModel.find();
@@ -441,9 +473,9 @@ export const userCart = asyncHandler(async (req, res) => {
     
     try {
        let cartItem = await Cart.findOne({productId});
-       if (cartItem?._id) {
-        res.status(500).json("Product Added Already to the cart");
-       }
+    //    if (cartItem?._id) {
+    //     res.status(500).json("Product Added Already to the cart");
+    //    }
         let newCart = await new Cart({
             userId: _id,
             productId,
@@ -455,7 +487,7 @@ export const userCart = asyncHandler(async (req, res) => {
         //     cart: newCart?._id
         // }, {new: true});
 
-        res.json(newCart);
+        res.send(newCart);
 
     } catch (error) {
         res.status(500).json({ message: error.message, sucess: false },);

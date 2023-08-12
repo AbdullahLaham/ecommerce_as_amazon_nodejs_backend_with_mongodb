@@ -22,7 +22,6 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        select: false,
         required: true,
     },
     role: {
@@ -54,10 +53,21 @@ const userSchema = new mongoose.Schema({
 {
     timestamps: true,
 });
-userSchema.pre("save", async function (next) {
-    // if (!this.isModified('password')) {
+// userSchema.pre("save", async function (next) {
+//     // if (!this.isModified('password')) {
 
-    // }
+//     // }
+//     if (!this.isModified("password")) {
+//       next();
+//     }
+//     const salt = await bcrypt.genSaltSync(10);
+//     this.password = await bcrypt.hash(this.password, salt);
+//     next();
+//   });
+
+
+
+userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) {
       next();
     }
@@ -65,12 +75,11 @@ userSchema.pre("save", async function (next) {
     this.password = await bcrypt.hash(this.password, salt);
     next();
   });
-
-userSchema.methods.isPasswordMatched = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
-};
-
-
+  
+  
+  userSchema.methods.isPasswordMatched = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
+  };
 
 userSchema.methods.createPasswordResetToken = async function () {
     const resettoken = crypto.randomBytes(32).toString("hex");
