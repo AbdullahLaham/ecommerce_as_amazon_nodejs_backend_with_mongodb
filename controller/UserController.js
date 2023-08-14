@@ -6,7 +6,7 @@ import Coupon from '../models/CouponModel.js';
 import Order from '../models/OrderModel.js';
 import asyncHandler from 'express-async-handler';
 import { validateMongoDBID } from '../utils/validateMongodbId.js';
-import { generateNewToken } from '../utils/refreshtoken.js';
+import { generateNewToken } from '../utils/refreshToken.js';
 import jwt from 'jsonwebtoken';
 import { sendEmail } from './EmailController.js';
 import uniqid from 'uniqid';
