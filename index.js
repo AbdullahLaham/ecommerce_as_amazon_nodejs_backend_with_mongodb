@@ -32,9 +32,6 @@ const PORT = process.env.PORT || 4000;
 // app.use('/', (req, res) => {
 //     res.send('server is running')
 // });
-app.use('/', async (req, res) => {
-    res.json("Server is running")
-});
 
 app.use('/user', authRouter);
 app.use('/product', productRouter);
@@ -51,6 +48,9 @@ app.use(errorHandler);
 app.use('/chat', chatRouter);
 app.use('/messages', messageRouter)
 
+app.use('/', async (req, res) => {
+    res.json("Server is running")
+});
 
 
 let server = app.listen(PORT, () => {
