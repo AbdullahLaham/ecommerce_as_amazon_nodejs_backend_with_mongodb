@@ -25,7 +25,7 @@ router.get('/order/:id', authMiddleware, getAnOrder);
 
 router.get('/get-orders', authMiddleware, getUserOrders);
 
-router.get('/get-orders/:id', authMiddleware, getUserOrders);
+// router.get('/get-orders/:id', authMiddleware, getUserOrders);
 
 router.get('/all-users',authMiddleware, isAdmin ,  getAllUsers);
 router.get('/admin-users',authMiddleware ,  getAdminUsers);
