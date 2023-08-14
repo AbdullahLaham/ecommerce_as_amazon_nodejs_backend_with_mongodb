@@ -665,7 +665,7 @@ export const getAllOrders = asyncHandler(async (req, res) => {
     const {_id} = req.user;
     validateMongoDBID(_id);
     try {
-        let order = await Order.find({orderBy: _id}).populate("products.product").populate('orderBy');
+        let order = await Order.find({orderBy: _id}).populate("orderItems.product");
         res.json(order);
     } catch (error) {
         res.status(500).json({ message: error.message, sucess: false },);
