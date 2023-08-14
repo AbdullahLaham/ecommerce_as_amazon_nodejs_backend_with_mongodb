@@ -31,6 +31,10 @@ const PORT = process.env.PORT || 4000;
 // app.use('/', (req, res) => {
 //     res.send('server is running')
 // });
+app.use('/', async (req, res) => {
+    res.json("Server is running")
+});
+
 app.use('/user', authRouter);
 app.use('/product', productRouter);
 app.use('/stripe', stripeRouter);
