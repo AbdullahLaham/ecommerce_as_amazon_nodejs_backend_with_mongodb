@@ -20,6 +20,7 @@ import chatRouter from './routes/ChatRoute.js';
 import messageRouter from './routes/MessageRoute.js';
 import { authMiddleware } from './middlewares/authMiddleware.js';
 import ws, {WebSocketServer} from 'ws';
+
 const app = express();
 // morgan is to show the requests that comes to your server in the terminal
 app.use(morgan("dev"));
