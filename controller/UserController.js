@@ -166,7 +166,7 @@ export const handleRefreshToken = asyncHandler(async (req, res) => {
         // console.log(refreshToken);
         const user = await User.findOne({ refreshToken });
         if (!user) throw new Error("No refresh token present in DB or not matched");
-        jwt.verify(refreshToken, process.env.JWT_SECRET, (err, decoded) => {
+        jwt.verify(refreshToken, 'mysecret', (err, decoded) => {
             console.log(decoded?.id, user._id);
 
             if (err || decoded?.id !== String(user._id)) {
@@ -259,7 +259,7 @@ export const saveAddress = asyncHandler(async (req, res, next) => {
 export const getAllUsers = asyncHandler(async (req, res) => {
 
     try {
-        const users = await User.find().populate('wishlist');;
+        const users = await User.find().populate('wishlist');
         res.status(200).json(users);
     } catch (error) {
         res.status(500).json({ message: error.message, sucess: false },);
