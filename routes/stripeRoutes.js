@@ -10,7 +10,7 @@ dotenv.config();
 
 router.post('/create-checkout-session', authMiddleware, async (req, res) => {
 
-  const stripe = Stripe(process.env.STRIPE_URL);
+  const stripe = Stripe('sk_test_51LMHmvAw2oupCOB0zk8Vvq55pNjq7zCcLni6sE61D2Q1G6AETsyBUJ1WcKWl8dsBwH4Qv2dcGyWxu8CKd9ljUZzn00dfBc0csB');
   const {_id} = req.user;
 
     try {
@@ -41,8 +41,8 @@ router.post('/create-checkout-session', authMiddleware, async (req, res) => {
             
           ,
           mode: 'payment',
-          success_url: `${process.env.CLIENT_URL}/checkout-success`,
-          cancel_url: `${process.env.CLIENT_URL}/checkout-failed`,
+          success_url: `https://ecommerce-as-amazon-nodejs-frontend-with-react-js.vercel.app/checkout-success`,
+          cancel_url: `https://ecommerce-as-amazon-nodejs-frontend-with-react-js.vercel.app/checkout-failed`,
         });
 
         res.send({url: session.url});
