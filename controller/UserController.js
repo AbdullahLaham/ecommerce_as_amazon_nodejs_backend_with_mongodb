@@ -272,23 +272,31 @@ export const getAllUsers = asyncHandler(async (req, res) => {
 
 
 export const getAdminUsers  = asyncHandler(async (req, res) => {
+    // current User
+    const { _id } = req.user;
 
     try {
         const users = await User.findOne({
             role: 'admin',
         });
+
         const chats = await ChatModel.find();
         let userss = [];
 
         for (let i  = 0; i< users?.length; i++) {
             let counter = 0;
             for (let j  = 0; j< chats?.length; j++) {
-                if (chats[j]?.members[0] == users[i]?._id?.toString() || chats[j]?.members[1] == users[i]?._id?.toString()) {
-                    console.log(true)
-                } else {
-                    console.log(false)
-                    counter++;
-                }
+                // if (chats[j]?.members[0] == users[i]?._id?.toString() || chats[j]?.members[1] == users[i]?._id?.toString()) {
+                //     console.log(true)
+                // }
+                if (chats[j]?.members[0] == _id?.toString() || chats[j]?.members[1] == _id?.toString()) {
+                    if (chats[j]?.members[0] == users[i]?._id?.toString() || chats[j]?.members[1] == users[i]?._id?.toString()) {
+                    }
+                    else {
+                        console.log(false)
+                        counter++;
+                    }
+                } 
     // console.log(chats[j]?.members[0], chats[j]?.members[1], users[i]?._id?.toString())
             }
             if (counter == chats?.length) {
