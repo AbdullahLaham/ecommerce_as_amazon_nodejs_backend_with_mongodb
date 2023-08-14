@@ -1,4 +1,4 @@
-import Color from '../models/ColorModel.js';
+import Color from '../models/colorModel.js';
 import asyncHandler from 'express-async-handler';
 import { validateMongoDBID } from '../utils/validateMongodbId.js';
 
